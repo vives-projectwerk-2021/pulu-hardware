@@ -1,6 +1,6 @@
 # Pulu-hardware
 
-All information of the hardware of the pulu project from Pojectwerk Vives is found here.  
+All information of the hardware of the pulu project from Projectwerk Vives is found here.  
 
 ## Hardware group
 
