@@ -6,7 +6,7 @@ All information of the hardware of the pulu project from Pojectwerk Vives is fou
 
 * Dylan Missuwe  
 * Timon Claerhout  
-* Seppe Dewitte  
+* Seppe De Witte  
 * Tybris Vandenbroucke  
 * Aaron Degroote  
 
@@ -30,16 +30,87 @@ To manage this huge project we split up in 4 groups:
 |---|---|
 | ![Front](./img/PCB_front.PNG) | ![Back](./img/PCB_back.PNG) |
 
-### Shematic
+### Schematic
 
-![Shematic PCB](./img/PCB_shematic.PNG)
+![Schematic PCB](./img/PCB_shematic.PNG)
 
 ## Features
+
+### Microcontroller
+
+The microcontroller we use is the STM32L476RG. We chose this microcontroller because its
+ultralow power with FlexPowerControl and has all the features we need such as:
+
+___
+
+Memory µC
+
+```text
+Up to 1 MB Flash, 2 banks read-while-write,proprietary code readout protection.
+
+Up to 128 KB of SRAM including 32 KB with hardware parity check.
+
+External memory interface for static memories supporting SRAM, PSRAM, NOR and NAND memories.
+
+Quad SPI memory interface.
+```
+
+Rich analog peripherals (independent supply)
+
+```text
+3x 12-bit ADC 5 Msps, up to 16-bit with hardware oversampling, 200 μA/Msps
+
+2x 12-bit DAC output channels, low-power sample and hold
+
+2x operational amplifiers with built-in PGA
+
+2x ultra-low-power comparators
+```
+
+20x communication interfaces
+
+```text
+USB OTG 2.0 full-speed, LPM and BCD
+
+2x SAIs (serial audio interface)
+
+3x I2C FM+(1 Mbit/s), SMBus/PMBus
+
+5x USARTs (ISO 7816, LIN, IrDA, modem)
+
+1x LPUART (Stop 2 wake-up)
+
+3x SPIs (and 1x Quad SPI)
+
+CAN (2.0B Active) and SDMMC interface
+
+SWPMI single wire protocol master I/F
+
+IRTIM (Infrared interface)
+```
+
+Other Features
+
+```text
+14-channel DMA controller
+
+True random number generator
+
+CRC calculation unit, 96-bit unique ID
+
+RTC with HW calendar, alarms and calibration
+
+LCD 8× 40 or 4× 44 with step-up converter
+
+Up to 24 capacitive sensing channels: support touchkey, linear and rotary touch sensors
+```
+
+![Microcontroller](./img/stm32l476rg.png)
 
 ### Lora chip
 
 In order to transmit the data without using mush power we use LoRaWAN.  
-We are using the FRM95W lora chip for that:  
+We are using the RFM95W lora chip for that:  
 
 ![Lora chip](./img/RFM95W.PNG)
 
@@ -96,7 +167,7 @@ We have also written a library of the temperature sensor which can be found here
 
 ### Light sensor
 
-To measure the light we are using the TCN75AVOA713 lux sensor.  
+To measure the light we are using the LTR329als01 lux sensor.  
 
 ![Light sensor](./img/LTR329.PNG)
 
