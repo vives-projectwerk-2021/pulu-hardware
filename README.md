@@ -7,7 +7,7 @@ All information of the hardware of the pulu project from Projectwerk Vives is fo
 * Dylan Missuwe  
 * Timon Claerhout  
 * Seppe De Witte  
-* Tybris Vandenbroucke  
+* Thybris Vandenbroucke  
 * Aaron Degroote  
 
 ## Intro
@@ -32,7 +32,10 @@ To manage this huge project we split up in 4 groups:
 
 ### Schematic
 
-![Schematic PCB](./img/PCB_shematic.PNG)
+![Schematic PCB](./img/PCB_shematic.PNG)  
+
+Repository with KiCAD files:
+[Microcontroller PCB](https://github.com/vives-projectwerk-2021/Microcontroller_pcb)
 
 ## Features
 
@@ -110,7 +113,7 @@ Up to 24 capacitive sensing channels: support touchkey, linear and rotary touch 
 ### Lora chip
 
 In order to transmit the data without using mush power we use LoRaWAN.  
-We are using the RFM95W lora chip for that:  
+We are using the [RFM95W](https://www.rfsolutions.co.uk/downloads/1463993415RFM95_96_97_98W.pdf) lora chip for that:  
 
 ![Lora chip](./img/RFM95W.PNG)
 
@@ -120,7 +123,7 @@ For reading and writing the sensors we're using I2C communication.
 
 ### Crypto chip
 
-We are using the ATECC508A crypto chip.  
+We are using the [ATECC508A](https://www.tme.eu/Document/ec38f2d40df555909f34806db4bdb798/ATECC508A-DTE.pdf) crypto chip.  
 
 ![Crypto chip](./img/ATEC.PNG)
 
@@ -134,9 +137,9 @@ It also doens't need much power, in sleep current: <150 nA.
 ### Moisture sensor
 
 To measure the water contents in the ground we use moisture sensors.  
-We provided copper tapes every 25 cm by the sensor so we can see the capacitance on 4 different depths:  
+We provided copper tapes every 25 cm by the sensor so we can see the capacitance on 4 different depths inside the PCB tube.  
 
-We are using the FDC1004 moisture sensor:  
+We are using the [FDC1004](https://www.ti.com/lit/ds/symlink/fdc1004.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1638778262131&ref_url=https%253A%252F%252Fwww.ti.com%252Fgeneral%252Fdocs%252Fsuppproductinfo.tsp%253FdistId%253D10%2526gotoUrl%253Dhttps%253A%252F%252Fwww.ti.com%252Flit%252Fgpn%252Ffdc1004) moisture sensor:  
 
 ![Moisture sensor](./img/FDC1004.PNG)
 
@@ -147,12 +150,12 @@ It also doesn't need much power:
 * Active mode: 750 µA
 * Standby mode: 29 µA
 
-We have also written a library of the moisture sensor which can be found here:  
+We have also written a library of the moisture sensor which can be found here:
 [Moisture sensor driver](https://github.com/vives-projectwerk-2021/pulu-moisture-sensor.git)
 
 ### Temperature sensor
 
-To measure the temperature we are using the TCN75AVOA713 sensor.  
+To measure the temperature we are using the [TCN75AVOA713](https://www.mouser.be/datasheet/2/268/21935C-70836.pdf) sensor.  
 
 ![Temperature sensor](./img/TNC75.PNG)
 
@@ -167,7 +170,7 @@ We have also written a library of the temperature sensor which can be found here
 
 ### Light sensor
 
-To measure the light we are using the LTR329als01 lux sensor.  
+To measure the light we are using the [LTR329als01](https://www.mouser.com/datasheet/2/239/Lite-On_LTR-329ALS-01%20DS_ver1.1-348647.pdf) lux sensor.  
 
 ![Light sensor](./img/LTR329.PNG)
 
@@ -191,4 +194,9 @@ The PCB has other functions such as:
 
 ### Case for PCB
 
-To make sure our PCB stays waterproof we are using a PVC tube with ...
+To make sure our PCB stays waterproof we are using a PVC tube with a glass lid at the top.  
+That can be opened with screws.  
+At the bottom of the PCB tube is a 3D printed spike that fits perfectly in the tube and is connected with glue. So we can put the tube much easier in the ground.  
+Here is a sensor that we planted outside school:  
+
+![sensor outside school](./img/PCB_case.jpg)  
