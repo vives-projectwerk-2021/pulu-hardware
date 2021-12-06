@@ -199,4 +199,4 @@ That can be opened with screws.
 At the bottom of the PCB tube is a 3D printed spike that fits perfectly in the tube and is connected with glue. So we can put the tube much easier in the ground.  
 Here is a sensor that we planted outside school:  
 
-![sensor outside school](./img/PCB_case.jpg)  
+![sensor outside school](./img/PCB_case.png)  
