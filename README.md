@@ -65,8 +65,8 @@ To manage this huge project we split up in 4 groups:
 
 | Front | Back |
 |---|---|
-|In this picture you can see the front of the PCB|In this picture you can see the back of the PCB|
-|![top](./img/front.png) | ![back](./img/back.png) |
+| In this picture you can see the front of the PCB | In this picture you can see the back of the PCB |
+| ![top](./img/front.png) | ![back](./img/back.png) |
 
 This is our main PCB we produced for the pulu project. It recieves his data with I2C communication of all the sensors and transmits it with the Lora module.  
 
