@@ -155,7 +155,7 @@ Up to 24 capacitive sensing channels: support touchkey, linear and rotary touch 
 
 #### µC_Pinout
 
-| Schematic | Datasheet |
+| Pinout of schematic | Pinout of datasheet |
 |---|---|
 | ![Schematic](./img/Microcontroller_schematic.PNG) | ![Datasheet](./img/Microcontroller_datasheet.PNG) |
 
@@ -248,8 +248,8 @@ Built-in temperature sensor and low battery indicator.
 
 #### Lora_Pinout
 
+| Pinout of schematic | Pinout of datasheet |
 |---|---|
-|In this picture you can see the pinout of the schematic |In this picture you can see the pinout of the datasheet|
 |![Schematic](./img/Lora_schematic.PNG) | ![Datasheet](./img/Lora_datasheet.PNG) |
 
 #### Lora_Pinout-table
@@ -305,8 +305,8 @@ Multiple I/O Options:
 
 #### Crypto_pinout
 
+| Pinout of schematic | Pinout of datasheet |
 |---|---|
-|In this picture you can see the pinout of the schematic |In this picture you can see the pinout of the datasheet|
 |![Schematic](./img/Crypto_schematic.PNG) | ![Datasheet](./img/Crypto_datasheet.PNG) |
 
 #### Crypto_pinout-table
@@ -356,8 +356,8 @@ Current Consumption:
 
 #### Moisture_pinout
 
+| Pinout of schematic | Pinout of datasheet |
 |---|---|
-|In this picture you can see the pinout of the schematic |In this picture you can see the pinout of the datasheet|
 |![Schematic](./img/Moisture_schematic.PNG) | ![Datasheet](./img/Moisture_datasheet.PNG) |
 
 #### Moisture_pinout-table
@@ -396,9 +396,8 @@ Shutdown Current: 2 μA (max.)
 
 #### Temperature_pinout
 
-| Pinout |
+| Pinout of schematic | Pinout of datasheet |
 |---|---|
-|In this picture you can see the pinout of the schematic |In this picture you can see the pinout of the datasheet|
 |![Schematic](./img/Temperature_schematic.PNG) | ![Datasheet](./img/Temperature_datasheet.PNG) |
 
 #### Temperature_pinout-table
