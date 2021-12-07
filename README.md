@@ -43,6 +43,10 @@ All information of the hardware in the pulu project from Projectwerk Vives is fo
         3. [Pinout Table](#Temperature_Pinout-table)  
         4. [Moisture driver](#Temperature-driver)  
     * [Light sensor](#Light-sensor)  
+        1. [Properties](#Light_Properties)  
+        2. [Pinout](#Light_Pinout)  
+        3. [Pinout Table](#Light_Pinout-table)  
+        4. [Moisture driver](#Light-driver)
     * [Other](#Other)  
 
 5. [Case PCB](#Case-PCB)
@@ -424,11 +428,45 @@ To measure the light we are using the [LTR329als01](https://www.mouser.com/datas
 
 ![Light sensor](./img/LTR329.PNG)
 
-The sensor can measure light from 0.01 lux to 64k lux with an 16-bit effective resolution.  
-It also consumes not much power:
+#### Light_properties
 
-* Operating Current: 220 µA
-* Standby Current: 5 µA
+```txt
+I2C interface (Fast Mode @ 400kbit/s)
+
+Built-in temperature compensation circuit
+
+Supply voltage range from 2.4V to 3.6V
+capable of 1.7V logic voltage
+
+Operating temperature range from -30C to
++70C
+
+Immunity to IR / UV Light Source
+
+Automatically rejects 50 / 60 Hz lightings
+flicker
+
+Full dynamic range from 0.01 lux to 64k lux
+
+16-bit effective resolution
+```
+
+#### Light_pinout
+
+| Pinout of schematic | Pinout of datasheet |
+|---|---|
+|![Schematic](./img/Light_schematic.PNG) | ![Datasheet](./img/Light_datasheet.PNG) |
+
+#### Light_pinout-table
+
+| Pin number | Pin name | Pin type | function |
+|---|---|---|---|
+| 1 | VDD | S | Power supply |
+| 2 | GND | S | Ground |
+| 3 | SCL | I | Clock pin of I2C |
+| 4 | SDA | I/O | Data pin of I2C |
+
+#### Light-driver
 
 We have also written a library of the light sensor which can be found here:
 [Light sensor driver](https://github.com/vives-projectwerk-2021/lightSensorDriver.git)
