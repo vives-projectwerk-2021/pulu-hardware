@@ -362,7 +362,7 @@ Current Consumption:
 
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
-|![Schematic](./img/Moisture_schematic.PNG) | ![Datasheet](./img/Moisture_datasheet.PNG) |
+| ![Schematic](./img/Moisture_schematic.PNG) | ![Datasheet](./img/Moisture_datasheet.PNG) |
 
 #### Moisture_pinout-table
 
