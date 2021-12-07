@@ -163,7 +163,7 @@ Up to 24 capacitive sensing channels: support touchkey, linear and rotary touch 
 #### µC_Pinout-table
 
 | Pinout table|
-|:---|:---|:---|:---|
+| --- | --- | --- | --- |
 | Pin number | Pin name | Pin type | function |
 | 1 | VBAT | S | I/O | Voltage of battery |
 | 19 | VDD | S | Power for µC |
