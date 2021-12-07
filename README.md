@@ -157,7 +157,7 @@ Up to 24 capacitive sensing channels: support touchkey, linear and rotary touch 
 
 |---|---|
 |In this picture you can see the pinout of the schematic |In this picture you can see the pinout of the datasheet|
-|![Schematic](./img/Microcontroller_schematic.PNG) | ![Datasheet](./img/Microcontroller_datasheet.PNG) |
+| ![Schematic](./img/Microcontroller_schematic.PNG) | ![Datasheet](./img/Microcontroller_datasheet.PNG) |
 
 #### µC_Pinout-table
 
