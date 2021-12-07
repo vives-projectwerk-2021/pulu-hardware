@@ -155,16 +155,14 @@ Up to 24 capacitive sensing channels: support touchkey, linear and rotary touch 
 
 #### µC_Pinout
 
-| Pinout |
 |---|---|
 |In this picture you can see the pinout of the schematic |In this picture you can see the pinout of the datasheet|
 |![Schematic](./img/Microcontroller_schematic.PNG) | ![Datasheet](./img/Microcontroller_datasheet.PNG) |
 
 #### µC_Pinout-table
 
-| Pinout table|
-| --- | --- | --- | --- |
 | Pin number | Pin name | Pin type | function |
+| --- | --- | --- | --- |
 | 1 | VBAT | S | I/O | Voltage of battery |
 | 19 | VDD | S | Power for µC |
 | 32 | VDD | S | Power for µC |
@@ -250,16 +248,14 @@ Built-in temperature sensor and low battery indicator.
 
 #### Lora_Pinout
 
-| Pinout |
 |---|---|
 |In this picture you can see the pinout of the schematic |In this picture you can see the pinout of the datasheet|
 |![Schematic](./img/Lora_schematic.PNG) | ![Datasheet](./img/Lora_datasheet.PNG) |
 
 #### Lora_Pinout-table
 
-| Pinout table|
-|---|---|---|---|
 | Pin number | Pin name | Pin type | function |
+|---|---|---|---|
 | 1 | GND | S | Ground |
 | 2 | MISO | I | SPI Data output |
 | 3 | MOSI | O | SPI Data input |
@@ -309,16 +305,14 @@ Multiple I/O Options:
 
 #### Crypto_pinout
 
-| Pinout |
 |---|---|
 |In this picture you can see the pinout of the schematic |In this picture you can see the pinout of the datasheet|
 |![Schematic](./img/Crypto_schematic.PNG) | ![Datasheet](./img/Crypto_datasheet.PNG) |
 
 #### Crypto_pinout-table
 
-| Pinout table|
-|---|---|---|---|
 | Pin number | Pin name | Pin type | function |
+|---|---|---|---|
 | 1 | NC | S | Normal closed |
 | 2 | NC | S | Normal closed |
 | 3 | NC | S | Normal closed |
@@ -362,7 +356,6 @@ Current Consumption:
 
 #### Moisture_pinout
 
-| Pinout |
 |---|---|
 |In this picture you can see the pinout of the schematic |In this picture you can see the pinout of the datasheet|
 |![Schematic](./img/Moisture_schematic.PNG) | ![Datasheet](./img/Moisture_datasheet.PNG) |
@@ -410,9 +403,8 @@ Shutdown Current: 2 μA (max.)
 
 #### Temperature_pinout-table
 
-| Pinout table|
-|---|---|---|---|
 | Pin number | Pin name | Pin type | function |
+|---|---|---|---|
 | 1 | SDA | I/O | Data pin of I2C |
 | 2 | SCL | I | Clock pin of I2C |
 | 3 | ALERT | O | If temperature goes above range |
