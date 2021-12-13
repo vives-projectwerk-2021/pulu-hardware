@@ -169,7 +169,7 @@ This is to reduce the voltage spikes of the power supply.
 So we ensure a stable supply without chance of damage to the components.  
 
 **Resistors:**  
-We are using the resistors that are connected to VCC and/or GND and by the switches as [pull-up/pull-down resistor](https://en.wikipedia.org/wiki/Pull-up_resistor).  
+We are using the resistors that are connected to VCC and/or GND and by the [switches](https://sten-eswitch-13110800-production.s3.amazonaws.com/system/asset/product_line/data_sheet/165/TL3342.pdf) as [pull-up/pull-down resistor](https://en.wikipedia.org/wiki/Pull-up_resistor).  
 This is to ensure a known state for a signal (0/1) when the switch is opened or closed.  
 So don't get false values.  
 
@@ -183,7 +183,7 @@ Where V is the voltage source, VLED is the LED voltage, and I is the LED current
 The NRST pin is used to exit stanby mode or to fix most of the common failures (unexpected reset and program counter corruption) of the chip.  
 We have to pull the pin low for that, by pressing on the connected switch.  
 
-**Boot0**  
+**Boot0:**  
 The BOOT0 pin is used to select one of three boot options:  
 • Boot from user Flash  
 • Boot from system memory  
@@ -284,7 +284,10 @@ Built-in temperature sensor and low battery indicator.
 |---|---|
 |![Schematic](./img/Lora_schematic.PNG) | ![Datasheet](./img/Lora_datasheet.PNG) |
 
-We use 
+We use the capacitor for decoupling and the 100k resistor as pull-up.  
+The 0 Ohm resistor is used for ensuring good communication with the µC pin.  
+
+At pin9 we're connecting the [antenna header](https://s3-us-west-2.amazonaws.com/catsy.582/C901-144-8RFX.pdf).  
 
 #### Lora_Pinout-table
 
