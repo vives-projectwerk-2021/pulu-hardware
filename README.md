@@ -163,6 +163,34 @@ Up to 24 capacitive sensing channels: support touchkey, linear and rotary touch 
 |---|---|
 | ![Schematic](./img/Microcontroller_schematic.PNG) | ![Datasheet](./img/Microcontroller_datasheet.PNG) |
 
+**Capacitors:**  
+We are using the capacitors that are connected to VCC and/or GND as [decouple capacitors](https://en.wikipedia.org/wiki/Decoupling_capacitor).  
+This is to reduce the voltage spikes of the power supply.  
+So we ensure a stable supply without chance of damage to the components.  
+
+**Resistors:**  
+We are using the resistors that are connected to VCC and/or GND and by the switches as [pull-up/pull-down resistor](https://en.wikipedia.org/wiki/Pull-up_resistor).  
+This is to ensure a known state for a signal (0/1) when the switch is opened or closed.  
+So don't get false values.  
+
+We are using the resitor by the LED as [ballast resistor](https://eepower.com/resistor-guide/resistor-applications/resistor-for-led/#).  
+This is used to limit the current through the LED and to prevent excess current that can burn out the LED.  
+We are using 360 Ohm resistor to ensure the LED can glow up nicely.  
+You can calculate the resistor yourself by using this formula: R = (V-Vled)/I  
+Where V is the voltage source, VLED is the LED voltage, and I is the LED current.  
+
+**NRST pin:**  
+The NRST pin is used to exit stanby mode or to fix most of the common failures (unexpected reset and program counter corruption) of the chip.  
+We have to pull the pin low for that, by pressing on the connected switch.  
+
+**Boot0**  
+The BOOT0 pin is used to select one of three boot options:  
+• Boot from user Flash  
+• Boot from system memory  
+• Boot from embedded SRAM  
+The boot loader is located in system memory.  
+It is used to reprogram the Flash memory by using I2C in Device mode through DFU (device firmware upgrade).  
+
 #### µC_Pinout-table
 
 | Pin number | Pin name | Pin type | function |
@@ -255,6 +283,8 @@ Built-in temperature sensor and low battery indicator.
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
 |![Schematic](./img/Lora_schematic.PNG) | ![Datasheet](./img/Lora_datasheet.PNG) |
+
+We use 
 
 #### Lora_Pinout-table
 
