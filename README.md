@@ -79,6 +79,7 @@ This is our main PCB we produced for the pulu project. It recieves his data with
 ![Schematic PCB](./img/Main_PCB.svg)  
 
 This is the schematic of the main PCB we will explain all components here below.  
+We use 0805 size for all SMD resistors, capacitors, etc.  
 
 You can find the repository of the KiCAD files here:
 [Microcontroller PCB](https://github.com/vives-projectwerk-2021/Microcontroller_pcb)
@@ -346,6 +347,8 @@ Multiple I/O Options:
 |---|---|
 |![Schematic](./img/Crypto_schematic.PNG) | ![Datasheet](./img/Crypto_datasheet.PNG) |
 
+The capacitor is a decoupling capacitor.  
+
 #### Crypto_pinout-table
 
 | Pin number | Pin name | Pin type | function |
@@ -370,6 +373,10 @@ We are using the [FDC1004](https://www.ti.com/lit/ds/symlink/fdc1004.pdf?HQS=dis
 
 Because this is a 4 channel capacitance to digital converter (so we can measure on 4 different depths).  
 Each channel has a full-scale range of ±15pF and can handle a sensor offset capacitance of up to 100pF.  
+
+At the picture below can you see the wiring of the sensor:  
+
+![Moisture schematic](./img/Moisture.svg)
 
 #### Moisture_properties
 
@@ -503,6 +510,67 @@ Full dynamic range from 0.01 lux to 64k lux
 
 We have also written a library of the light sensor which can be found here:
 [Light sensor driver](https://github.com/vives-projectwerk-2021/lightSensorDriver.git)
+
+### EEPROM
+
+To store our data we're using the [24LC64-I_SN](https://ww1.microchip.com/downloads/en/DeviceDoc/21189T.pdf) EEPROM.  
+
+![EEPROM](./img/24LC64.PNG)
+
+#### EEPROM-properties
+
+```txt
+Low-Power CMOS Technology:
+- Active current 3 mA, max.
+- Standby current 1 A, max.
+
+2-Wire Serial Interface, I2C™ Compatible
+
+Packages with 3 Address Pins are Cascadable up to 8 Devices
+
+Schmitt Trigger Inputs for Noise Suppression
+
+100 kHz and 400 kHz Clock Compatibility
+
+Page Write Time 5 ms, max.
+
+32-Byte Page Write Buffer
+
+ESD Protection > 4,000V
+
+Temperature Ranges:
+- Industrial (I): -40°C to +85°C
+- Automotive (E): -40°C to +125°C
+```
+
+#### EEPROM_pinout
+
+| Pinout of schematic | Pinout of datasheet |
+|---|---|
+|![Schematic](./img/EEPROM_schematic.PNG) | ![Datasheet](./img/EEPROM_datasheet.PNG) |
+
+The resistor is used for better communication with pin.  
+The capacitor is used for decoupling.  
+
+**WP pin:**
+The WP pin allows the user to write-protect the entire array (0000-1FFF) when the pin is tied to VCC. If tied to GND the write protection is disabled. The WP pin is sampled at the Stop bit for every Write command. Toggling the WP pin after the Stop bit will have no effect on the execution of the write cycle.  
+
+#### EEPROM_pinout-table
+
+| Pin number | Pin name | Pin type | function |
+|---|---|---|---|
+| 1 | A0 | I | Chip address input |
+| 2 | A1 | I | Chip address input |
+| 3 | A2 | I | Chip address input |
+| 4 | GND | S | Ground |
+| 5 | SDA | I/O | Serial data of I2C |
+| 6 | SCL | I | Serial clock of I2C |
+| 7 | WP | I | Write protect |
+| 8 | Vcc | S | Power supply |
+
+#### Battery holder
+
+...
 
 ### Other
 
