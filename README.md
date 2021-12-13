@@ -76,7 +76,7 @@ This is our main PCB we produced for the pulu project. It recieves his data with
 
 ### Schematic
 
-![Schematic PCB](./img/PCB_schematic.PNG)  
+![Schematic PCB](./img/Main_PCB.svg)  
 
 This is the schematic of the main PCB we will explain all components here below.  
 
