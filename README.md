@@ -41,12 +41,12 @@ All information of the hardware in the pulu project from Projectwerk Vives is fo
         1. [Properties](#Temperature_Properties)  
         2. [Pinout](#Temperature_Pinout)  
         3. [Pinout Table](#Temperature_Pinout-table)  
-        4. [Moisture driver](#Temperature-driver)  
+        4. [Temperature driver](#Temperature-driver)  
     * [Light sensor](#Light-sensor)  
         1. [Properties](#Light_Properties)  
         2. [Pinout](#Light_Pinout)  
         3. [Pinout Table](#Light_Pinout-table)  
-        4. [Moisture driver](#Light-driver)
+        4. [Light driver](#Light-driver)
     * [Other](#Other)  
 
 5. [Case PCB](#Case-PCB)
@@ -164,6 +164,18 @@ Up to 24 capacitive sensing channels: support touchkey, linear and rotary touch 
 |---|---|
 | ![Schematic](./img/Microcontroller_schematic.PNG) | ![Datasheet](./img/Microcontroller_datasheet.PNG) |
 
+**NRST pin:**  
+The NRST pin is used to exit stanby mode or to fix most of the common failures (unexpected reset and program counter corruption) of the chip.  
+We have to pull the pin low for that, by pressing on the connected switch.  
+
+**Boot0:**  
+The BOOT0 pin is used to select one of three boot options:  
+• Boot from user Flash  
+• Boot from system memory  
+• Boot from embedded SRAM  
+The boot loader is located in system memory.  
+It is used to reprogram the Flash memory by using I2C in Device mode through DFU (device firmware upgrade).  
+
 **Capacitors:**  
 We are using the capacitors that are connected to VCC and/or GND as [decouple capacitors](https://en.wikipedia.org/wiki/Decoupling_capacitor).  
 This is to reduce the voltage spikes of the power supply.  
@@ -180,17 +192,17 @@ We are using 360 Ohm resistor to ensure the LED can glow up nicely.
 You can calculate the resistor yourself by using this formula: R = (V-Vled)/I  
 Where V is the voltage source, VLED is the LED voltage, and I is the LED current.  
 
-**NRST pin:**  
-The NRST pin is used to exit stanby mode or to fix most of the common failures (unexpected reset and program counter corruption) of the chip.  
-We have to pull the pin low for that, by pressing on the connected switch.  
+**Crystal**
+In order to create a constant frequency for the µC we're using a [crystal](https://en.wikipedia.org/wiki/Crystal_oscillator) because it generates oscillations on a certain frequency.  
+There are also 2 capacitors connected as you can see at the schematic.  
+Those are [load capacitors](https://www.iqdfrequencyproducts.com/blog/2020/08/03/myths-around-load-capacitance-how-to-choose-the-right-capacitors/) and this is for a guaranteed precision of the crystal.
 
-**Boot0:**  
-The BOOT0 pin is used to select one of three boot options:  
-• Boot from user Flash  
-• Boot from system memory  
-• Boot from embedded SRAM  
-The boot loader is located in system memory.  
-It is used to reprogram the Flash memory by using I2C in Device mode through DFU (device firmware upgrade).  
+![Crystal](./img/Crystal.PNG)  
+
+**Connector**
+You can see a 3 pin male header at the bottom of the schematic.  
+This is for switching the power source with a jumper.  
+We can choose to either power the circuit with the voltage of the USB connector or the battery.
 
 #### µC_Pinout-table
 
@@ -233,6 +245,95 @@ It is used to reprogram the Flash memory by using I2C in Device mode through DFU
 | 47 | VSS | S | GND of µC |
 | 63 | VSS | S | GND of µC |
 | 12 | VSSA | S | GND of µC |
+
+#### Batteryholder
+
+We're using a battery holder that can hold 2x AA batteries to provide power for our PCB without other adapters ([USB-C](#USB-C)).  
+
+![BatteryHolder](./img/Battery_datasheet.PNG)
+
+We are using Saft LS14500 AA batteries because those are nickel-based batteries.  
+They work in extreme temperatures and last longer than other batteries, making them the preferred choice for backup power in industry, PCB, etc.  
+
+We are using a [LDO](#LDO) to expand the life time and performance of the battery.  
+
+#### Batteryholder_pinout
+
+| Pinout of schematic | Pinout of datasheet |
+|---|---|
+|![Schematic](./img/Battery_schematic.PNG) | ![Datasheet](./img/Battery_holder.PNG) |
+
+There are 2 [fuses](https://en.wikipedia.org/wiki/Fuse_(electrical)) by the battery holder for protecting the circuit.  
+A fuse is an electrical safety device that operates to provide overcurrent protection of an electrical circuit. Its a metal wire or strip that melts when too much current flows through it, thereby stopping or interrupting the current.  
+
+#### Batteryholder_pinout-table
+
+| Pin number | Pin name | Pin type | function |
+|---|---|---|---|
+| 1 | 1 | S | VCC+ pin |
+| 2 | 2 | S | VCC+ pin |
+| 3 | 3 | S | Ground |
+| 4 | 4 | S | Ground |
+
+### Battery_voltage
+
+We're using a [voltage divider](https://en.wikipedia.org/wiki/Voltage_divider) in order to monitor the battery voltage. Thereby we connect 2 resistors in serial and we measure the voltage in the middle as you can see on the schematic:  
+
+![VoltageDivider](./img/Voltage_Divider.PNG)
+
+### LDO
+
+We are using the [TC1054](http://ww1.microchip.com/downloads/en/DeviceDoc/21350E.pdf)  
+
+![LDO](./img/LDO.PNG)
+
+We're using this [Low-dropout regulator](https://en.wikipedia.org/wiki/Low-dropout_regulator) in order to expand the battery life time and performance of our circuit.  
+
+#### LDO_pinout
+
+| Pinout of schematic | Pinout of datasheet |
+|---|---|
+|![Schematic](./img/LDO_schematic.PNG) | ![Datasheet](./img/LDO_holder.PNG) |
+
+We used the components on the schematic that were recommomended from the datasheet.
+
+#### LDO_pinout-table
+
+| Pin number | Pin name | Pin type | function |
+| --- | --- | --- | --- |
+| 1 | VIN | S | Unregulated supply input |
+| 2 | GND | S | Ground terminal |
+| 3 | SHDN | I | Shutdown control input |
+| 4 | ERROR | O | Out-of-Regulation Flag (Open-drain output) |
+| 5 | VOUT | O | Regulated voltage output |
+
+### USB-C
+
+We also provided an [USB-C](https://en.wikipedia.org/wiki/USB-C) connector to power the circuit. Which is ideal for programming and testing software out without wasting power of the batteries which can later be used in the fields.  
+
+#### USB-C_pinout
+
+| Pinout of schematic | Pinout of datasheet |
+|---|---|
+|![Schematic](./img/USB_schematic.PNG) | ![Datasheet](./img/USB_holder.PNG) |
+
+We're connecting 2 resistor of 5.1k on the USB-C because it is recommended in the datasheet to provide a good working.  
+You can see at the left of the schematic a voltage regulator because the voltage of the USB-C is 5V. But we need 3.3V for the circuit, so we implemented a regulator 5V-3.3V.  
+At the right of the schematic is an [ESD-protection](https://en.wikipedia.org/wiki/Electrostatic_discharge) implemented. This is as safety so the components don't stop working after an electrostatic discharge.
+
+#### USB-C_pinout-table
+
+| Pin number | Pin name | Pin type | function |
+| --- | --- | --- | --- |
+| 1 | VIN | S | Unregulated supply input |
+| 2 | GND | S | Ground terminal |
+| 3 | SHDN | I | Shutdown control input |
+| 4 | ERROR | O | Out-of-Regulation Flag (Open-drain output) |
+| 5 | VOUT | O | Regulated voltage output |
+
+### Program header
+
+...
 
 ### Lora-chip
 
@@ -567,10 +668,6 @@ The WP pin allows the user to write-protect the entire array (0000-1FFF) when th
 | 6 | SCL | I | Serial clock of I2C |
 | 7 | WP | I | Write protect |
 | 8 | Vcc | S | Power supply |
-
-#### Battery holder
-
-...
 
 ### Other
 
