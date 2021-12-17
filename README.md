@@ -24,6 +24,25 @@ All information of the hardware in the pulu project from Projectwerk Vives is fo
         1. [Properties](#µC_Properties)  
         2. [Pinout](#µC_Pinout)  
         3. [Pinout Table](#µC_Pinout-table)  
+    * [Battery holder](#Batteryholder)  
+        1. [Pinout](#Batteryholder_Pinout)  
+        2. [Pinout Table](#Batteryholder_Pinout-table)  
+    * [LDO](#LDO)  
+        1. [Pinout](#LDO_Pinout)  
+        2. [Pinout Table](#LDO_Pinout-table)  
+    * [USB-C](#USB-C)  
+        1. [Pinout](#USB-C_Pinout)  
+        2. [Pinout Table](#USB-C_Pinout-table)  
+    * [SWD](#SWD)  
+        1. [Pinout](#SWD_Pinout)  
+        2. [Pinout Table](#SWD_Pinout-table)  
+    * [UART](#UART)  
+        1. [Pinout](#SWD_Pinout)  
+        2. [Pinout Table](#SWD_Pinout-table)  
+    * [Nucleo](#Nucleo)  
+        1. [Properties](#Nucleo_Properties)  
+        2. [Pinout](#Nucleo_Pinout)  
+        3. [Pinout Table](#Nucleo_Pinout-table)  
     * [Lora chip](#Lora-chip)  
         1. [Properties](#Lora_Properties)  
         2. [Pinout](#Lora_Pinout)  
@@ -37,6 +56,9 @@ All information of the hardware in the pulu project from Projectwerk Vives is fo
         2. [Pinout](#Moisture_Pinout)  
         3. [Pinout Table](#Moisture_Pinout-table)  
         4. [Moisture driver](#Moisture-driver)  
+    * [Moisture output](#Moisture_output)  
+        1. [Pinout](#Moisture_out_Pinout)  
+        2. [Pinout Table](#Moisture_out_Pinout-table)  
     * [Temperture sensor](#Temperature-sensor)  
         1. [Properties](#Temperature_Properties)  
         2. [Pinout](#Temperature_Pinout)  
@@ -46,8 +68,14 @@ All information of the hardware in the pulu project from Projectwerk Vives is fo
         1. [Properties](#Light_Properties)  
         2. [Pinout](#Light_Pinout)  
         3. [Pinout Table](#Light_Pinout-table)  
-        4. [Light driver](#Light-driver)
-    * [Other](#Other)  
+        4. [Light driver](#Light-driver)  
+    * [EEPROM memory](#EEPROM)  
+        1. [Properties](#EEPROM_Properties)  
+        2. [Pinout](#EEPROM_Pinout)  
+        3. [Pinout Table](#EEPROM_Pinout-table)  
+    * [Board connection](#Board_connection)  
+        1. [Pinout](#Board_connection_Pinout)  
+        2. [Pinout Table](#Board_connection_Pinout-table)  
 
 5. [Case PCB](#Case-PCB)
 
@@ -74,7 +102,7 @@ To manage this huge project we split up in 4 groups:
 
 This is our main PCB we produced for the pulu project. It recieves his data with I2C communication of all the sensors and transmits it with the Lora module.  
 
-### Schematic
+## Schematic
 
 ![Schematic PCB](./img/Main_PCB.svg)  
 
@@ -216,39 +244,39 @@ We can choose to either power the circuit with the voltage of the USB connector 
 | 48 | VDDUSB | S | Power of USB |
 | 7 | NRST | I/O | Reset µC if pin set low |
 | 60 | BOOT0 | I/O | Set pin low for programming µC |
-| 8 | PC0 | I/O | Clock1 input of crypto |
-| 9 | PC1 | I/O | Data1 input of crypto |
+| 8 | PC0 | I | Clock1 input of crypto |
+| 9 | PC1 | O | Data1 output of crypto |
 | 10 | PC2 | I/O | Alert pin if temperature is to high |
-| 3 | PC14 | I/O | Input pin of crystal |
-| 4 | PC15 | I/O | Output pin of crystal |
-| 14 | PA0 | I/O | SPI chip select of lora chip|
-| 15 | PA1 | I/O | Reset pin of lora chip |
+| 3 | PC14 | I | Input pin of crystal |
+| 4 | PC15 | O | Output pin of crystal |
+| 14 | PA0 | I | SPI chip select of lora chip|
+| 15 | PA1 | I | Reset pin of lora chip |
 | 16 | PA2 | I/O | Transmit pin of D1 |
 | 17 | PA3 | I/O | Transmit pin of D0 |
 | 20 | PA4 | I/O | Voltage of battery |
-| 21 | PA5 | I/O | SPI clock input of lora chip |
-| 22 | PA6 | I/O | SPI data output of lora chip |
-| 23 | PA7 | I/O | SPI data input of lora chip |
+| 21 | PA5 | I | SPI clock input of lora chip |
+| 22 | PA6 | O | SPI data output of lora chip |
+| 23 | PA7 | I | SPI data input of lora chip |
 | 43 | PA10 | I/O | DIO0 of lora chip for feedback |
 | 44 | PA11 | I/O | negative pin of USB |
 | 45 | PA12 | I/O | positive pin of USB |
 | 46 | PA13 | I/O | SWDIO |
-| 49 | PA14 | I/O | SWCLK |
+| 49 | PA14 | I | SWCLK |
 | 50 | PA15 | I/O | PA15 to Nucleo chip |
 | 28 | PB2 | I/O | DIO1 of lora chip for feedback |
 | 55 | PB3 | I/O | SWO |
-| 57 | PB5 | I/O | Provides power to LED |
-| 34 | PB13 | I/O | CLock2 pin for I2C |
-| 35 | PB14 | I/O | Data2 pin for I2C |
+| 57 | PB5 | O | Provides power to LED |
+| 34 | PB13 | I | CLock2 pin for I2C |
+| 35 | PB14 | O | Data2 pin for I2C |
 | 18 | VSS | S | GND of µC |
 | 31 | VSS | S | GND of µC |
 | 47 | VSS | S | GND of µC |
 | 63 | VSS | S | GND of µC |
 | 12 | VSSA | S | GND of µC |
 
-#### Batteryholder
+### Batteryholder
 
-We're using a battery holder that can hold 2x AA batteries to provide power for our PCB without other adapters ([USB-C](#USB-C)).  
+We're using a battery holder that can hold 2x AA batteries to provide power for our PCB without other adapters.  
 
 ![BatteryHolder](./img/Battery_datasheet.PNG)
 
@@ -257,7 +285,7 @@ They work in extreme temperatures and last longer than other batteries, making t
 
 We are using a [LDO](#LDO) to expand the life time and performance of the battery.  
 
-#### Batteryholder_pinout
+#### Batteryholder_Pinout
 
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
@@ -266,7 +294,7 @@ We are using a [LDO](#LDO) to expand the life time and performance of the batter
 There are 2 [fuses](https://en.wikipedia.org/wiki/Fuse_(electrical)) by the battery holder for protecting the circuit.  
 A fuse is an electrical safety device that operates to provide overcurrent protection of an electrical circuit. Its a metal wire or strip that melts when too much current flows through it, thereby stopping or interrupting the current.  
 
-#### Batteryholder_pinout-table
+#### Batteryholder_Pinout-table
 
 | Pin number | Pin name | Pin type | function |
 |---|---|---|---|
@@ -275,7 +303,7 @@ A fuse is an electrical safety device that operates to provide overcurrent prote
 | 3 | 3 | S | Ground |
 | 4 | 4 | S | Ground |
 
-### Battery_voltage
+#### Battery_voltage
 
 We're using a [voltage divider](https://en.wikipedia.org/wiki/Voltage_divider) in order to monitor the battery voltage. Thereby we connect 2 resistors in serial and we measure the voltage in the middle as you can see on the schematic:  
 
@@ -289,7 +317,7 @@ We are using the [TC1054](http://ww1.microchip.com/downloads/en/DeviceDoc/21350E
 
 We're using this [Low-dropout regulator](https://en.wikipedia.org/wiki/Low-dropout_regulator) in order to expand the battery life time and performance of our circuit.  
 
-#### LDO_pinout
+#### LDO_Pinout
 
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
@@ -297,7 +325,7 @@ We're using this [Low-dropout regulator](https://en.wikipedia.org/wiki/Low-dropo
 
 We used the components on the schematic that were recommomended from the datasheet.
 
-#### LDO_pinout-table
+#### LDO_Pinout-table
 
 | Pin number | Pin name | Pin type | function |
 | --- | --- | --- | --- |
@@ -311,17 +339,17 @@ We used the components on the schematic that were recommomended from the datashe
 
 We also provided an [USB-C](https://en.wikipedia.org/wiki/USB-C) connector to power the circuit. Which is ideal for programming and testing software out without wasting power of the batteries which can later be used in the fields.  
 
-#### USB-C_pinout
+#### USB-C_Pinout
 
-| Pinout of schematic | Pinout of datasheet |
-|---|---|
-|![Schematic](./img/USB_schematic.PNG) | ![Datasheet](./img/USB_holder.PNG) |
+| Pinout of schematic |
+|---|
+| ![Schematic](./img/USB_schematic.PNG) |
 
 We're connecting 2 resistor of 5.1k on the USB-C because it is recommended in the datasheet to provide a good working.  
 You can see at the left of the schematic a voltage regulator because the voltage of the USB-C is 5V. But we need 3.3V for the circuit, so we implemented a regulator 5V-3.3V.  
 At the right of the schematic is an [ESD-protection](https://en.wikipedia.org/wiki/Electrostatic_discharge) implemented. This is as safety so the components don't stop working after an electrostatic discharge.
 
-#### USB-C_pinout-table
+#### USB-C_Pinout-table
 
 | Pin number | Pin name | Pin type | function |
 | --- | --- | --- | --- |
@@ -331,9 +359,104 @@ At the right of the schematic is an [ESD-protection](https://en.wikipedia.org/wi
 | 4 | ERROR | O | Out-of-Regulation Flag (Open-drain output) |
 | 5 | VOUT | O | Regulated voltage output |
 
-### Program header
+### SWD
 
-...
+In order to program and debug the Microcontroller we're using SWD or [Serial Wire Debug](https://www.silabs.com/documents/public/application-notes/an0062.pdf).  
+Since SWD specializes in programming and debugging, it comes with many special features that is usually not available anywhere else like sending debug info to the computer via the IO line.  
+
+#### SWD_Pinout
+
+| Pinout of schematic | Pinout of datasheet |
+|---|---|
+|![Schematic](./img/SWD_schematic.PNG) | ![Datasheet](./img/SWD_datasheet.PNG) |
+
+In SWD mode, two pins are used for debugging: one bi-directional pin (SWDIO) transfers the information and the second pin (SWDCLK) clocks the data. A third pin (SWO) delivers the trace data at minimum system cost. The Serial Wire and JTAG pins are shared.  
+
+#### SWD_Pinout-table
+
+| Pin number | Pin name | Pin type | function |
+| --- | --- | --- | --- |
+| 1 | VCC | S | Voltage pin |
+| 2 | SWDIO | I/O | Data pin |
+| 3 | GND | S | Ground terminal |
+| 4 | SWCLK | I | Clock pin |
+| 5 | GND | S | Ground terminal |
+| 6 | SWO | O | Delivers trace data |
+| 7 | NC | / | Not connected |
+| 8 | NC | / | Not connected |
+| 9 | GND | S | Ground terminal |
+| 10 | RESET | O | Regulated voltage output |
+
+### UART
+
+We also provided an [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter) or Universal asynchronous receiver-transmitter connection to also program and debug the PCB.  
+A UART is usually an individual (or part of an) integrated circuit (IC) used for serial communications over a computer or peripheral device serial port. One or more UART peripherals are commonly integrated in microcontroller chips. Specialised UARTs are used for automobiles, smart cards and SIMs.  
+
+#### UART_Pinout
+
+| Pinout of schematic |
+|---|
+| ![Schematic](./img/UART_schematic.PNG) |
+
+#### UART_Pinout-table
+
+| Pin number | Pin name | Pin type | function |
+| --- | --- | --- | --- |
+| 1 | RESET | S | Reset pin |
+| 2 | TX | I/O | Transmit pin |
+| 3 | RX | S | Reciever pin |
+| 4 | VCC | I | Voltage terminal |
+| 5 | NC | S | Not connected |
+| 6 | GND | O | Ground terminal |
+
+### Nucleo
+
+We're using the [STM32L432KC](https://www.st.com/en/microcontrollers-microprocessors/stm32l432kc.html) microcontroller.  
+We use the same pins of that µC in our pin headers so we can plug them easily in and out.  
+
+#### Nucleo_Properties
+
+```text
+STM32L432KC in UFQFPN32 package
+
+ARM®32-bit Cortex®-M4 CPU
+
+80 MHz max CPU frequency
+
+VDD from 1.65 V to 3.6 V
+
+256 KB Flash
+
+64 KB SRAM
+
+Timers General Purpose (4)
+
+SPI/I2S (2)
+
+I2C (2)
+
+USART (2)
+
+12-bit ADC with 10 channels (1)
+
+GPIO (20) with external interrupt capability
+
+RTC
+
+Random Generator (TRNG for HW entropy)
+```
+
+#### Nucleo_Pinout
+
+| Pinout of schematic |
+|---|
+| ![Schematic](./img/nucleo_schematic.PNG) |
+
+#### Nucleo_Pinout-table
+
+![Nucleo_pinout](./img/Nucleo_pinout-table.PNG)
+
+![Nucleo_pinout_legend](./img/Nucleo_pinout-table-legenda.PNG)
 
 ### Lora-chip
 
@@ -442,7 +565,7 @@ Multiple I/O Options:
 <150nA Sleep Current 
 ```
 
-#### Crypto_pinout
+#### Crypto_Pinout
 
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
@@ -450,7 +573,7 @@ Multiple I/O Options:
 
 The capacitor is a decoupling capacitor.  
 
-#### Crypto_pinout-table
+#### Crypto_Pinout-table
 
 | Pin number | Pin name | Pin type | function |
 |---|---|---|---|
@@ -479,7 +602,7 @@ At the picture below can you see the wiring of the sensor:
 
 ![Moisture schematic](./img/Moisture.svg)
 
-#### Moisture_properties
+#### Moisture_Properties
 
 ```text
 Input Range: ±15 pF
@@ -499,13 +622,13 @@ Current Consumption:
 – Standby: 29 µA
 ```
 
-#### Moisture_pinout
+#### Moisture_Pinout
 
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
 | ![Schematic](./img/Moisture_schematic.PNG) | ![Datasheet](./img/Moisture_datasheet.PNG) |
 
-#### Moisture_pinout-table
+#### Moisture_Pinout-table
 
 ![Moisture pinout table](./img/Moisture_pinout-table.PNG)
 
@@ -514,13 +637,34 @@ Current Consumption:
 We have also written a library of the moisture sensor which can be found here:
 [Moisture sensor driver](https://github.com/vives-projectwerk-2021/pulu-moisture-sensor.git)
 
+### Moisture_output
+
+The output pins of the moisture sensors data are connected with a 6pins header.  
+
+#### Moisture_out_Pinout
+
+| Pinout of schematic |
+|---|
+|![Moisture output](./img/Moisture_out_schematic.PNG)|
+
+#### Moisture_out_Pinout-table
+
+| Pin number | Pin name | Pin type | function |
+|---|---|---|---|
+| 1 | GND | S | Ground terminal |
+| 2 | VCC | S | Voltage terminal |
+| 3 | SCL1 | S | Clock input 1 |
+| 4 | SCL2 | S | Clock input 2 |
+| 5 | SDA1 | I/O | Data pin 1 |
+| 6 | SDA2 | I/O | Data pin 2 |
+
 ### Temperature-sensor
 
 To measure the temperature we are using the [TCN75AVOA713](https://www.mouser.be/datasheet/2/268/21935C-70836.pdf) sensor.  
 
 ![Temperature sensor](./img/TNC75.PNG)
 
-#### Temperature_properties
+#### Temperature_Properties
 
 ```text
 Temperature-to-Digital Converter
@@ -539,13 +683,13 @@ Operating Current: 200 μA (typ.)
 Shutdown Current: 2 μA (max.)
 ```
 
-#### Temperature_pinout
+#### Temperature_Pinout
 
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
 |![Schematic](./img/Temperature_schematic.PNG) | ![Datasheet](./img/Temperature_datasheet.PNG) |
 
-#### Temperature_pinout-table
+#### Temperature_Pinout-table
 
 | Pin number | Pin name | Pin type | function |
 |---|---|---|---|
@@ -569,7 +713,7 @@ To measure the light we are using the [LTR329als01](https://www.mouser.com/datas
 
 ![Light sensor](./img/LTR329.PNG)
 
-#### Light_properties
+#### Light_Properties
 
 ```txt
 I2C interface (Fast Mode @ 400kbit/s)
@@ -592,13 +736,13 @@ Full dynamic range from 0.01 lux to 64k lux
 16-bit effective resolution
 ```
 
-#### Light_pinout
+#### Light_Pinout
 
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
 |![Schematic](./img/Light_schematic.PNG) | ![Datasheet](./img/Light_datasheet.PNG) |
 
-#### Light_pinout-table
+#### Light_Pinout-table
 
 | Pin number | Pin name | Pin type | function |
 |---|---|---|---|
@@ -618,7 +762,7 @@ To store our data we're using the [24LC64-I_SN](https://ww1.microchip.com/downlo
 
 ![EEPROM](./img/24LC64.PNG)
 
-#### EEPROM-properties
+#### EEPROM-Properties
 
 ```txt
 Low-Power CMOS Technology:
@@ -644,7 +788,7 @@ Temperature Ranges:
 - Automotive (E): -40°C to +125°C
 ```
 
-#### EEPROM_pinout
+#### EEPROM_Pinout
 
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
@@ -656,7 +800,7 @@ The capacitor is used for decoupling.
 **WP pin:**
 The WP pin allows the user to write-protect the entire array (0000-1FFF) when the pin is tied to VCC. If tied to GND the write protection is disabled. The WP pin is sampled at the Stop bit for every Write command. Toggling the WP pin after the Stop bit will have no effect on the execution of the write cycle.  
 
-#### EEPROM_pinout-table
+#### EEPROM_Pinout-table
 
 | Pin number | Pin name | Pin type | function |
 |---|---|---|---|
@@ -669,16 +813,32 @@ The WP pin allows the user to write-protect the entire array (0000-1FFF) when th
 | 7 | WP | I | Write protect |
 | 8 | Vcc | S | Power supply |
 
-### Other
+### Board_connection
 
-The PCB has other functions such as:
+As you saw at the PCB in the beginning we designed 2 apart PCB's.  
+Because the batteries are taking a lot of space so we can put those above eachother.  
+In order to connect them we're using pin headers with the important pins as VCC, GND, datapins, etc.  
 
-* USB-C connection with ESD protection
-* AA Battery voltage monitoring
-* EEPROM (24LC64-I_SN) for storing data
-* LED for testing out communication PCB
+#### Board_connection_pinout
 
-### Case-PCB
+| Pinout of schematic |
+|---|
+|![Schematic](./img/board_connection.PNG) |
+
+#### Board_connection_pinout-table
+
+| Pin number | Pin name | Pin type | function |
+|---|---|---|---|
+| 1 | GND | S | Ground terminal |
+| 2 | VCC | S | Voltage terminal |
+| 3 | Button | I | Button high/low |
+| 4 | LED | O | LED on/off |
+| 5 | SCL | I | Serial clock of I2C |
+| 6 | SDA | I/O | Serial data of I2C |
+| 7 | Battery | O | Voltage battery after LDO |
+| 8 | VBAT | O | Voltage of battery |
+
+## Case-PCB
 
 To make sure our PCB stays waterproof we are using a PVC tube with a glass lid at the top.  
 That can be opened with screws.  
