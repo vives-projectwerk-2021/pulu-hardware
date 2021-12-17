@@ -339,6 +339,8 @@ We used the components on the schematic that were recommomended from the datashe
 
 We also provided an [USB-C](https://en.wikipedia.org/wiki/USB-C) connector to power the circuit. Which is ideal for programming and testing software out without wasting power of the batteries which can later be used in the fields.  
 
+![USB-C](./img/USB-C.PNG)
+
 #### USB-C_Pinout
 
 | Pinout of schematic |
@@ -413,6 +415,8 @@ A UART is usually an individual (or part of an) integrated circuit (IC) used for
 
 We're using the [STM32L432KC](https://www.st.com/en/microcontrollers-microprocessors/stm32l432kc.html) microcontroller.  
 We use the same pins of that µC in our pin headers so we can plug them easily in and out.  
+
+![Nucleo](./img/Nucleo.PNG)
 
 #### Nucleo_Properties
 
