@@ -329,7 +329,7 @@ We're using this [Low-dropout regulator](https://en.wikipedia.org/wiki/Low-dropo
 
 | Pinout of schematic | Pinout of datasheet |
 |---|---|
-|![Schematic](./img/LDO_schematic.PNG) | ![Datasheet](./img/LDO_holder.PNG) |
+|![Schematic](./img/LDO_schematic.PNG) | ![Datasheet](./img/LDO_datasheet.PNG) |
 
 We used the components on the schematic that was recommended from the datasheet.
 
@@ -542,6 +542,8 @@ At pin9 we're connecting the [antenna header](https://s3-us-west-2.amazonaws.com
 | 13 | 3.3V | S | Supply voltage |
 | 14 | DIO0 | I/O | Digital I/O, software configured |
 | 15 | DIO1 | I/O | Digital I/O, software configured |
+
+All other pins are not connected.  
 
 ### Crypto-chip
 
