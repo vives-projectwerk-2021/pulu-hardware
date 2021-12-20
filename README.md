@@ -27,6 +27,8 @@ All information of the hardware in the pulu project from Projectwerk Vives is fo
     * [Battery holder](#Batteryholder)  
         1. [Pinout](#Batteryholder_Pinout)  
         2. [Pinout Table](#Batteryholder_Pinout-table)  
+        3. [Battery Voltage](#Battery_voltage)  
+        4. [Powerloss Battery](#Powerloss_Battery)  
     * [LDO](#LDO)  
         1. [Pinout](#LDO_Pinout)  
         2. [Pinout Table](#LDO_Pinout-table)  
@@ -315,7 +317,11 @@ A fuse is an electrical safety device that operates to provide overcurrent prote
 
 We're using a [voltage divider](https://en.wikipedia.org/wiki/Voltage_divider) in order to monitor the battery voltage. Thereby we connect 2 resistors in serial and we measure the voltage in the middle as you can see on the schematic:  
 
-![VoltageDivider](./img/Voltage_Divider.PNG)
+![VoltageDivider](./img/Voltage_Divider.PNG)  
+
+#### Powerloss_Battery
+
+![Battery power](./img/Battery.png)
 
 ### LDO
 
@@ -614,7 +620,7 @@ Each channel has a full-scale range of ±15pF and can handle a sensor offset cap
 
 At the picture below can you see the wiring of the sensor:  
 
-![Moisture schematic](./img/Moisture.svg)
+![Moisture schematic](./img/Moisture.png)
 
 #### Moisture_Properties
 
