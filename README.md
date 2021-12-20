@@ -79,6 +79,8 @@ All information of the hardware in the pulu project from Projectwerk Vives is fo
 
 5. [Case PCB](#Case-PCB)
 
+6. [Other](#Other)  
+
 ## Introduction
 
 All students of Elektronica-ICT had the assignment to work together on a project for the course Projectwerk of Vives Brugge.  
@@ -92,6 +94,8 @@ To manage this huge project we split up in 4 groups:
 * software  
 * devops  
 * firmware  
+
+We will give all information of the hardware in this repo.  
 
 ## PCB
 
@@ -214,23 +218,25 @@ We are using the resistors that are connected to VCC and/or GND and by the [swit
 This is to ensure a known state for a signal (0/1) when the switch is opened or closed.  
 So don't get false values.  
 
+In every I2C line (by SDA and SCL) are also extern pull-up resistors required, you can find more info [here](https://rheingoldheavy.com/i2c-pull-resistors/).  
+
 We are using the resitor by the LED as [ballast resistor](https://eepower.com/resistor-guide/resistor-applications/resistor-for-led/#).  
 This is used to limit the current through the LED and to prevent excess current that can burn out the LED.  
 We are using 360 Ohm resistor to ensure the LED can glow up nicely.  
 You can calculate the resistor yourself by using this formula: R = (V-Vled)/I  
 Where V is the voltage source, VLED is the LED voltage, and I is the LED current.  
 
-**Crystal**
+**Crystal**  
 In order to create a constant frequency for the µC we're using a [crystal](https://en.wikipedia.org/wiki/Crystal_oscillator) because it generates oscillations on a certain frequency.  
 There are also 2 capacitors connected as you can see at the schematic.  
-Those are [load capacitors](https://www.iqdfrequencyproducts.com/blog/2020/08/03/myths-around-load-capacitance-how-to-choose-the-right-capacitors/) and this is for a guaranteed precision of the crystal.
+Those are [load capacitors](https://www.iqdfrequencyproducts.com/blog/2020/08/03/myths-around-load-capacitance-how-to-choose-the-right-capacitors/) and this is for a guaranteed precision of the crystal.  
 
 ![Crystal](./img/Crystal.PNG)  
 
 **Connector**
 You can see a 3 pin male header at the bottom of the schematic.  
 This is for switching the power source with a jumper.  
-We can choose to either power the circuit with the voltage of the USB connector or the battery.
+We can choose to either power the circuit with the voltage of the USB connector or with the battery.
 
 #### µC_Pinout-table
 
@@ -323,7 +329,7 @@ We're using this [Low-dropout regulator](https://en.wikipedia.org/wiki/Low-dropo
 |---|---|
 |![Schematic](./img/LDO_schematic.PNG) | ![Datasheet](./img/LDO_holder.PNG) |
 
-We used the components on the schematic that were recommomended from the datasheet.
+We used the components on the schematic that was recommended from the datasheet.
 
 #### LDO_Pinout-table
 
@@ -337,7 +343,7 @@ We used the components on the schematic that were recommomended from the datashe
 
 ### USB-C
 
-We also provided an [USB-C](https://en.wikipedia.org/wiki/USB-C) connector to power the circuit. Which is ideal for programming and testing software out without wasting power of the batteries which can later be used in the fields.  
+We also provided an [USB-C](https://en.wikipedia.org/wiki/USB-C) connector to power the circuit. Which is ideal for programming and testing software out without wasting power of the batteries which can be used later in the fields.  
 
 ![USB-C](./img/USB-C.PNG)
 
@@ -392,7 +398,7 @@ In SWD mode, two pins are used for debugging: one bi-directional pin (SWDIO) tra
 ### UART
 
 We also provided an [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter) or Universal asynchronous receiver-transmitter connection to also program and debug the PCB.  
-A UART is usually an individual (or part of an) integrated circuit (IC) used for serial communications over a computer or peripheral device serial port. One or more UART peripherals are commonly integrated in microcontroller chips. Specialised UARTs are used for automobiles, smart cards and SIMs.  
+UART is usually an individual (or part of an) integrated circuit (IC) used for serial communications over a computer or peripheral device serial port. One or more UART peripherals are commonly integrated in microcontroller chips. Specialised UARTs are used for automobiles, smart cards and SIMs.  
 
 #### UART_Pinout
 
@@ -850,3 +856,15 @@ At the bottom of the PCB tube is a 3D printed spike that fits perfectly in the t
 Here is a sensor that we planted outside school:  
 
 ![Sensor outside school](./img/PCB_case.png)  
+
+The sensor values are send to our backend, which formats the data to our frontend.  
+You can see the live values on this website: [https://pulu.devbitapp.be/sensors](https://pulu.devbitapp.be/sensors)  
+
+## Other
+
+You can find more info of the other repo's here:  
+
+* [Backend](https://github.com/vives-projectwerk-2021/pulu-backend)  
+* [Frontend](https://github.com/vives-projectwerk-2021/pulu-frontend)  
+* [CLI](https://github.com/vives-projectwerk-2021/pulu-frontend)  
+* [Firmware](https://github.com/vives-projectwerk-2021/pulu-main-firmware)
