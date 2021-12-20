@@ -243,42 +243,44 @@ We can choose to either power the circuit with the voltage of the USB connector 
 | Pin number | Pin name | Pin type | function |
 | --- | --- | --- | --- |
 | 1 | VBAT | S | I/O | Voltage of battery |
-| 19 | VDD | S | Power for µC |
-| 32 | VDD | S | Power for µC |
-| 64 | VDD | S | Power for µC |
-| 13 | VDDA | S | Power for µC |
-| 48 | VDDUSB | S | Power of USB |
+| 3 | PC14 | I | Input pin of crystal |
+| 4 | PC15 | O | Output pin of crystal |
 | 7 | NRST | I/O | Reset µC if pin set low |
-| 60 | BOOT0 | I/O | Set pin low for programming µC |
 | 8 | PC0 | I | Clock1 input of crypto |
 | 9 | PC1 | O | Data1 output of crypto |
 | 10 | PC2 | I/O | Alert pin if temperature is to high |
-| 3 | PC14 | I | Input pin of crystal |
-| 4 | PC15 | O | Output pin of crystal |
+| 12 | VSSA | S | GND of µC |
+| 13 | VDDA | S | Power for µC |
 | 14 | PA0 | I | SPI chip select of lora chip|
 | 15 | PA1 | I | Reset pin of lora chip |
 | 16 | PA2 | I/O | Transmit pin of D1 |
 | 17 | PA3 | I/O | Transmit pin of D0 |
+| 18 | VSS | S | GND of µC |
+| 19 | VDD | S | Power for µC |
 | 20 | PA4 | I/O | Voltage of battery |
 | 21 | PA5 | I | SPI clock input of lora chip |
 | 22 | PA6 | O | SPI data output of lora chip |
 | 23 | PA7 | I | SPI data input of lora chip |
+| 28 | PB2 | I/O | DIO1 of lora chip for feedback |
+| 31 | VSS | S | GND of µC |
+| 32 | VDD | S | Power for µC |
+| 34 | PB13 | I | CLock2 pin for I2C |
+| 35 | PB14 | O | Data2 pin for I2C |
 | 43 | PA10 | I/O | DIO0 of lora chip for feedback |
 | 44 | PA11 | I/O | negative pin of USB |
 | 45 | PA12 | I/O | positive pin of USB |
 | 46 | PA13 | I/O | SWDIO |
+| 47 | VSS | S | GND of µC |
+| 48 | VDDUSB | S | Power of USB |
 | 49 | PA14 | I | SWCLK |
 | 50 | PA15 | I/O | PA15 to Nucleo chip |
-| 28 | PB2 | I/O | DIO1 of lora chip for feedback |
 | 55 | PB3 | I/O | SWO |
 | 57 | PB5 | O | Provides power to LED |
-| 34 | PB13 | I | CLock2 pin for I2C |
-| 35 | PB14 | O | Data2 pin for I2C |
-| 18 | VSS | S | GND of µC |
-| 31 | VSS | S | GND of µC |
-| 47 | VSS | S | GND of µC |
+| 60 | BOOT0 | I/O | Set pin low for programming µC |
 | 63 | VSS | S | GND of µC |
-| 12 | VSSA | S | GND of µC |
+| 64 | VDD | S | Power for µC |
+
+All other pins are not connected.  
 
 ### Batteryholder
 
